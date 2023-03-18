@@ -54,3 +54,6 @@ const meyveler=["elma","muz","cilek"];
 const isIncludes=meyveler.includes("armut");
 
 console.log(isIncludes)
+
+
+// dosya icindeki dosyayi calistirmak icin cd dosya adi
