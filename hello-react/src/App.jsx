@@ -28,12 +28,19 @@ import './App.css';
 
 const name =" Busra"
 const Surname ="Yilmaz"
+const isLoggedIn =true;
+
 function App(){
   return(
     <> 
     {/* <h1>{name}{Surname}</h1> */}
-    <h1>` Benim adım {name}, soyadım {Surname}`</h1>
-    
+    {/* <h1>{` Benim adım ${name}, soyadım ${Surname}`}</h1> */}
+    {/* <h1>
+      { isLoggedIn && ` Benim adım ${name}, soyadım ${Surname}` }
+      { !isLoggedIn && 'giris yapmadiniz'}
+      
+    </h1> */}
+    <h1> {isLoggedIn ? ` Benim adım ${name}, soyadım ${Surname}` : "Giris yapmadın"}</h1>
     </>
     // <div>         
     //   <h1>Hello React</h1>
