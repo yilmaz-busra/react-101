@@ -61,6 +61,7 @@ import './App.css';
 
 import User from "./components/User";
 // const friends=["huzo","tayfun","gokhan","bilal","ezgi","elif"];
+
 const friends =[
   {
     id:1,
@@ -79,14 +80,19 @@ function App(){
   return (
     <>
     <User
-     name="Busra" 
+    //  name="Busra" 
      surname="Yilmaz" 
      isLoggedIn={true} 
      age={29}
      friends={friends}
+     address={{
+      title:'Istanbul',
+      zip:34755
+     }}
      />
     </>
   )
 }
+
 
 export default App;
