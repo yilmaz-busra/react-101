@@ -39,7 +39,9 @@ function Form({ addContact, contacts }) {
           value={form.phone_number}
         />
       </div>
-      <button>ADD</button>
+      <div className="btn">
+        <button>ADD</button>
+      </div>
     </form>
   );
 }
