@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: rgb(228, 204, 222);
+
+  text-align: center;
+}
+
+.header-ib > input {
+  border: 2px solid pink;
+  height: 25px;
+  outline: none;
+  width: 650px;
+  margin-bottom: 20px;
+}
+
+.listdesign > ul {
+  list-style-type: none;
+}
+
+.listdesign > ul > li {
+  width: 650px;
+  background-color: rgb(248, 185, 233);
+  margin: 5px 0 5px 0;
+  padding: 0 5px;
+}
+.listdesign > ul > li > input[type="checkbox"] {
+  appearance: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #070707;
+}
+
+.btn-style {
+  display: flex;
+}
+.btn-style > button {
+  width: 150px !important;
+  margin-left: 5px;
+  background-color: rgb(249, 210, 216);
+  border: 1px solid rgb(249, 210, 216);
+  color: black;
+  padding: 4px;
+  margin-bottom: 3px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
