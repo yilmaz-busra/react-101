@@ -1,13 +1,15 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Users from "./pages/Users";
-import UserDetail from "./pages/UserDetail";
-import Contact from "./pages/Contact";
+import Home from "./pages/Dashboard/Home";
+import Users from "./pages/Dashboard/Users";
+import UserDetail from "./pages/Dashboard/UserDetail";
+import Contact from "./pages/Dashboard/Contact";
 
-import Login from "./pages/Login";
-import DashboardLayout from "./layouts/DashboardLayout";
-import AutLayout from "./layouts/AutLayout";
+import Login from "./pages/Auth/Login";
+import DashboardLayout from "./layouts/Dashboard/index";
+import AutLayout from "./layouts/Auth";
+import Register from "./layouts/Auth/Register";
+import ERROR404 from "./pages/ERROR404";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
 
         <Route path="auth" element={<AutLayout />}>
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="*" element={<ERROR404 />} />
         </Route>
       </Routes>
     </BrowserRouter>
