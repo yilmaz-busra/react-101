@@ -1,9 +1,9 @@
 import React from "react";
 import { useFormik } from "formik";
-import validationSchema from "./validations";
+import contactSchema from "./validations.js";
 
 function Contact() {
-  const { handleSubmit, handleChange, values, isSubmitting, errors } =
+  const { handleSubmit, handleChange, values, errors, touched, handleBlur } =
     useFormik({
       initialValues: {
         firstName: "",
@@ -11,13 +11,17 @@ function Contact() {
         email: "",
         message: "",
       },
-      onSubmit: async (values, bag) => {
-        await new Promise((r) => setTimeout(r, 1000));
+      onSubmit: (values, bag) => {
         console.log(values);
+
+        if (values.email === "test@test.com") {
+          return bag.setErrors({ email: "bu mail adresi kullanılıyor" });
+        }
         bag.resetForm();
       },
-      validationSchema,
+      validationSchema: contactSchema,
     });
+  console.log(touched);
   return (
     <div>
       İletişim
@@ -30,10 +34,13 @@ function Contact() {
             name="firstName"
             placeholder="Jane"
             value={values.firstName}
-            disabled={isSubmitting}
-            onChange={handleChange("firstName")}
+            // disabled={isSubmitting}
+            onChange={handleChange}
+            onBlur={handleBlur("firstName")}
           />
-          {errors.firstName && <div>{errors.firstName}</div>}
+          {errors.firstName && touched.firstName && (
+            <div>{errors.firstName}</div>
+          )}
         </div>
         <div>
           <label htmlFor="lastName">Last Name</label>
@@ -42,10 +49,11 @@ function Contact() {
             name="lastName"
             placeholder="Doe"
             value={values.lastName}
-            disabled={isSubmitting}
-            onChange={handleChange("lastName")}
+            // disabled={isSubmitting}
+            onChange={handleChange}
+            onBlur={handleBlur("lastName")}
           />
-          {errors.lastName && <div>{errors.lastName}</div>}
+          {errors.lastName && touched.lastName && <div>{errors.lastName}</div>}
         </div>
         <div>
           {" "}
@@ -56,10 +64,11 @@ function Contact() {
             placeholder="jane@acme.com"
             type="email"
             value={values.email}
-            disabled={isSubmitting}
-            onChange={handleChange("email")}
+            // disabled={isSubmitting}
+            onChange={handleChange}
+            onBlur={handleBlur("email")}
           />
-          {errors.email && <div>{errors.email}</div>}
+          {errors.email && touched.email && <div>{errors.email}</div>}
         </div>
 
         <div>
@@ -70,14 +79,13 @@ function Contact() {
             name="message"
             placeholder="Your message is..."
             value={values.message}
-            disabled={isSubmitting}
-            onChange={handleChange("message")}
+            // disabled={isSubmitting}
+            onChange={handleChange}
+            onBlur={handleBlur("message")}
           />
         </div>
 
-        <button type="submit" disabled={isSubmitting}>
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
