@@ -26,7 +26,7 @@ function Contact() {
     <div>
       İletişim
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit} className="form">
+      <form className="form">
         <div>
           <label htmlFor="firstName">First Name</label>
           <input
