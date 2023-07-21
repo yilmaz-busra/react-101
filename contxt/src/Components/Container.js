@@ -3,6 +3,7 @@ import Button from "./Button";
 import Header from "./Header";
 import { useContext } from "react";
 import ThemeContext from "../contex/ThemeContext";
+import Profile from "./Profile";
 
 // context appi kullandigimiz zaman herhangi bir state i
 //  herhangibir componentte kullanmak icin ic ice alt alta
@@ -14,6 +15,8 @@ function Container() {
       <Header />
       <hr />
       <Button />
+      <hr />
+      <Profile />
     </div>
   );
 }

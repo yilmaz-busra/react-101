@@ -2,6 +2,7 @@ import "./App.css";
 import Container from "./Components/Container";
 
 import { ThemeProvider } from "./contex/ThemeContext";
+import { UserProvider } from "./contex/UserContext";
 
 function App() {
   //altinda bulunan butun componentlere verilen dataya erisim saglar
@@ -10,7 +11,9 @@ function App() {
     //   <Button />
     // </ThemeContext.Provider>
     <ThemeProvider>
-      <Container />
+      <UserProvider>
+        <Container />
+      </UserProvider>
     </ThemeProvider>
   );
 }
