@@ -1,10 +1,11 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
 import cities from "../data/cities.json";
-const WeatherContext = createContext();
+const WeatherContext = createContext(); // baglamımı olusturdum
 export const WeatherProvider = ({ children }) => {
-  const [weatherData, setWeatherData] = useState();
-  const [city, setCity] = useState("İstanbul");
+  //alt bileşenlere hava durumu verilerini ve işlevleri sağlamak için bağlam saglayıcı bileseni olusturdum.
+  const [weatherData, setWeatherData] = useState([]); //weatherData adında bir durum değişkeni ve onu güncellemek için setWeatherData adında bir fonksiyon
+  const [selectedCity, setSelectedCity] = useState("İstanbul");
   const key = " 5feb1ccaefbf73a0af111024f9413deb";
 
   useEffect(() => {
@@ -18,12 +19,13 @@ export const WeatherProvider = ({ children }) => {
     };
     getData();
     console.log(weatherData);
-  }, [city]);
+  }, [selectedCity]);
 
   const values = {
+    //bağlamda paylaşılacak değerleri bir nesne olarak oluşturdum
     cities,
-    setCity,
-    city,
+    selectedCity,
+    setSelectedCity,
     weatherData,
   };
 
