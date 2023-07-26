@@ -5,14 +5,14 @@ const WeatherContext = createContext(); // baglamımı olusturdum
 export const WeatherProvider = ({ children }) => {
   //alt bileşenlere hava durumu verilerini ve işlevleri sağlamak için bağlam saglayıcı bileseni olusturdum.
   const [weatherData, setWeatherData] = useState([]); //weatherData adında bir durum değişkeni ve onu güncellemek için setWeatherData adında bir fonksiyon
-  const [selectedCity, setSelectedCity] = useState("İstanbul");
-  const key = " 5feb1ccaefbf73a0af111024f9413deb";
+  const [selectedCity, setSelectedCity] = useState("Adana");
+  const key = "14a434db4dbd4882a21134320230205";
 
   useEffect(() => {
-    const chosen = cities.filter((city) => city.name === city)[0];
+    const selected = cities.filter((city) => city.name === selectedCity)[0];
     const getData = async () => {
       const { data } = await axios(
-        `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${chosen.name}&days=7&aqi=no&alerts=no`
+        `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${selected.name}&days=7&aqi=no&alerts=no`
       );
 
       setWeatherData(data.forecast.forecastday);

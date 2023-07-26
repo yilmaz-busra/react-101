@@ -14,9 +14,7 @@ function Main() {
   ];
 
   return (
-    <div>
-      <div>Hava Durumu</div>
-
+    <div className="container">
       <ul>
         {weatherData.map((info, i) => {
           var d = new Date(info.date);
@@ -24,7 +22,7 @@ function Main() {
           return (
             <li key={i}>
               {/* hava durumu bilgilerinin yazacağı div */}
-              <div className="condition">
+              <div className="container2">
                 <span className="day">{dayName}</span>
                 <img src={`${info.day.condition.icon}`} alt="" />
                 <span className="max">{info.day.maxtemp_c}°C</span>
