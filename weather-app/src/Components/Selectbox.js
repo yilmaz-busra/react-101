@@ -5,7 +5,10 @@ function Selectbox() {
   const { setSelectedCity, cities } = useWeather();
   return (
     <div>
-      <select onChange={(e) => setSelectedCity(e.target.value)}>
+      <select
+        className="selected"
+        onChange={(e) => setSelectedCity(e.target.value)}
+      >
         {cities.map((city) => {
           return (
             <option value={city.name} key={city.id}>

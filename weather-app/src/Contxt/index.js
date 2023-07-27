@@ -18,7 +18,7 @@ export const WeatherProvider = ({ children }) => {
       setWeatherData(data.forecast.forecastday);
     };
     getData();
-    console.log(weatherData);
+    // console.log(weatherData);
   }, [selectedCity]);
 
   const values = {

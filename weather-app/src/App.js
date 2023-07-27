@@ -6,7 +6,7 @@ import Selectbox from "./Components/Selectbox";
 function App() {
   return (
     <WeatherProvider>
-      <h2>Hava Durumu</h2>
+      <h2 className="txt">Hava Durumu</h2>
       <Selectbox />
       <Main />
     </WeatherProvider>
