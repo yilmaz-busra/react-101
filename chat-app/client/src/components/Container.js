@@ -1,13 +1,18 @@
 import { useEffect } from "react";
 import ChatForm from "./ChatForm";
 import ChatList from "./ChatList";
-import { init, subscribeChat } from "../SocketApi";
+import { init, subscribeChat, subscribeInitialMessages } from "../SocketApi";
 import { useChat } from "../contxt/ChatContext";
 
 function Container() {
   const { setMessages } = useChat();
   useEffect(() => {
     init();
+
+    subscribeInitialMessages((messages) => {
+      setMessages(messages);
+    });
+
     subscribeChat((message) => {
       setMessages((prevState) => [...prevState, { message }]);
     });
