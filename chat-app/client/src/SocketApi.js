@@ -10,3 +10,7 @@ export const init = () => {
 
   socket.on("connect", () => console.log("bağlantı kuruldu"));
 };
+//backend e mesaj iletmek icin
+export const sendMessage = (message) => {
+  if (socket) socket.emit("new-message", message);
+};
