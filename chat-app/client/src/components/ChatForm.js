@@ -10,7 +10,7 @@ function ChatForm() {
     e.preventDefault(); // sayfa yenilemesini durdurdu
     console.log(message);
 
-    setMessages((prevState) => [...prevState, { message }]);
+    setMessages((prevState) => [...prevState, { message, fromMe: true }]);
     sendMessage(message); //backend e mesaj iletmek icin
     setMessage("");
   };
