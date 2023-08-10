@@ -1,31 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 import { IntlProvider, FormattedMessage, FormattedNumber } from "react-intl";
-
+// Localization, bir React uygulamasında kullanılan metinlerin,
+// farklı dillerde sunulması için kullanılan bir teknik
 const messages = {
   "tr-TR": {
     title: "merhaba dünya",
-    description: " 3 yeni mesaj var",
+    description: " {count} yeni mesaj var",
   },
   "en-US": {
     title: "hello world",
-    description: " you have 3 new message",
+    description: " you have {count} new message",
   },
 };
 function App() {
-  const [lang, setLang] = useState("tr-TR");
+  const isLocale = localStorage.getItem("locale");
+  const defaultLocale = isLocale ? isLocale : navigator.language;
+  const [locale, setLocale] = useState(defaultLocale);
+  console.log(defaultLocale);
+
+  useEffect(() => {
+    localStorage.setItem("locale", locale);
+  }, [locale]);
+
   return (
     <div className="App">
-      <IntlProvider messages={messages[lang]}>
+      <IntlProvider locale={locale} messages={messages[locale]}>
         <FormattedMessage id="title" />
         <p>
-          <FormattedMessage id="description" />
+          <FormattedMessage id="description" values={{ count: 3 }} />
         </p>
         <br />
         <br />
-        <button onClick={() => setLang("tr-TR")}>TR</button>
-        <button onClick={() => setLang("en-US")}>EN</button>
+        <button onClick={() => setLocale("tr-TR")}>TR</button>
+        <button onClick={() => setLocale("en-US")}>EN</button>
       </IntlProvider>
     </div>
   );
