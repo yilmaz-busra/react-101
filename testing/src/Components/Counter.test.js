@@ -13,3 +13,14 @@ test("increase btn", () => {
 
   expect(count).toHaveTextContent("1");
 });
+
+test("decrease btn", () => {
+  render(<Counter />);
+
+  const count = screen.getByText("0");
+  const increaseBtn = screen.getByText("Decrease");
+
+  userEvent.click(increaseBtn);
+
+  expect(count).toHaveTextContent("1");
+});
