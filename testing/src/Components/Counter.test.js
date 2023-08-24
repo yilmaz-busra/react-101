@@ -1,38 +1,48 @@
-import { render, screen } from "@testing-library/react";
+import { screen, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { act } from "react-dom/test-utils";
 
-import Counter from "./index";
+import Counter from ".";
 
-describe("Counter Tests", () => {
-  let increaseBtn, decreaseBtn, count;
+describe("Counter tests", () => {
+  let count, increaseBtn, decreaseBtn;
 
+  //her bir test öncesinde çalışacak olan kodlar yazılır.
   beforeEach(() => {
-    console.log("Her testten önce çalışacağım!");
     render(<Counter />);
+    count = screen.getByText("0");
     increaseBtn = screen.getByText("Increase");
     decreaseBtn = screen.getByText("Decrease");
-    count = screen.getByText("0");
   });
 
-  beforeAll(() => {
-    console.log("İlk başta bir kere çalışacağım!");
-  });
+  // tüm testlerden önce bir kere çalışacak olan kodlar yazılır.
+  // beforeAll(() => {
+  //     console.log("Tüm testlerden önce bir kere çalışır");
+  // })
 
-  afterEach(() => {
-    console.log("Her testten sonra çalışacağım!");
-  });
+  //her bir test sonrasında çalışacak olan kodlar yazılır.
+  // afterEach(() => {
+  //     console.log("her bir test sonrasında çalışır.");
+  // })
 
-  afterAll(() => {
-    console.log("En son bir kere çalışacağım!");
-  });
+  // tüm testler sonrasında bir kere çalışacak olan kodlar yazılır
+  // afterAll(() => {
+  //     console.log("tüm testler gerçekleştikten sonra bir kere çalışır");
+  // })
 
-  test("increase btn", () => {
+  test("increase test", () => {
     userEvent.click(increaseBtn);
-    expect(count).toHaveTextContent("1");
+
+    waitFor(() => {
+      expect(count).toHaveTextContent("1");
+    });
   });
 
-  test("decrease btn", () => {
+  test("decrease test", () => {
     userEvent.click(decreaseBtn);
-    expect(count).toHaveTextContent("-1");
+
+    waitFor(() => {
+      expect(count).toHaveTextContent("-1");
+    });
   });
 });
