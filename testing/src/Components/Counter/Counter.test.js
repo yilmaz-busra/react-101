@@ -1,7 +1,7 @@
 import { screen, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
 import Counter from ".";
+import { act } from "react-dom/test-utils";
 
 describe("Counter tests", () => {
   let count, increaseBtn, decreaseBtn;

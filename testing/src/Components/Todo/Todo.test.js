@@ -5,8 +5,9 @@ import Todo from "./index";
 
 describe("Todo testleri", () => {
   let button, input;
-  render(<Todo />);
+
   beforeEach(() => {
+    render(<Todo />);
     button = screen.getByText("Add");
     input = screen.getByLabelText("Text");
   });
