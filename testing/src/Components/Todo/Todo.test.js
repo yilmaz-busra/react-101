@@ -22,13 +22,13 @@ describe("Todo testleri", () => {
     expect(input).toBeInTheDocument();
   });
 
-  test("Inputa string girilip butona basılınca listeye eklenmeli", () => {
+  test("Inputa string girilip butona basılınca listeye eklenmeli", async () => {
     // inputu doldur
     const name = "Mehmet";
-    userEvent.type(input, name);
+    await userEvent.type(input, name);
 
     // butona tıkla
-    userEvent.click(button);
+    await userEvent.click(button);
 
     // assertion
     expect(screen.getByText(name)).toBeInTheDocument();
