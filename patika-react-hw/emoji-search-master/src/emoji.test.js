@@ -16,4 +16,21 @@ describe("App Test", () => {
     const li = screen.getByText("Click to copy emoji");
     expect(li.length).toEqual(20);
   });
+
+  describe("Emoji Filter", () => {
+    let emojiFilter;
+    beforeEach(() => {
+      render(<App />);
+      // ekranda input'umuzu buluyoruz.
+      emojiFilter = screen.getByLabelText("emojiInput");
+    });
+
+    test("emoji filter işlemi test ediliyor", () => {
+      //Test için filtrelenecek emoji belirliyoruz.
+      const emoji = "Smiley";
+      // fireEvent ile inputa text'i yazdırıyoruz.
+      fireEvent.click(emojiFilter, emoji);
+      expect(screen.getByText(emoji)).toBeInTheDocument();
+    });
+  });
 });
